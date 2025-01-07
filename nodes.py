@@ -387,7 +387,7 @@ def save_audio_files(output, sample_rate, filename_prefix, counter, data=None, s
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # Create filename with datetime
-    wavname = f"{filename_prefix}_{current_time}" if not data else f"{replace_variables(filename_prefix, data)}_{current_time}"
+    wavname = f"{filename_prefix}" if not data else f"{replace_variables(filename_prefix, data)}"
     
     filepaths = []
     for i, audio in enumerate(output):
