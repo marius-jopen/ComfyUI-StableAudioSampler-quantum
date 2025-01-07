@@ -387,13 +387,13 @@ def save_audio_files(output, sample_rate, filename_prefix, counter, data=None, s
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # Create filename with datetime
-    wavname = f"{filename_prefix}" if not data else f"{replace_variables(filename_prefix, data)}"
+    wavname = f"{filename_prefix}_{current_time}" if not data else f"{replace_variables(filename_prefix, data)}_{current_time}"
     
     filepaths = []
     for i, audio in enumerate(output):
         if i > 0: # TODO fix batches
             break
-        fpath = f"{quote(wavname)}_{counter:04}.wav"
+        fpath = f"{quote(wavname)}.wav"
         file_path = os.path.join(output_dir, fpath)
         print(f"[comfyui-stable-audio-sampler, nodes.py, save_audio_files] Saving audio to {file_path}")
         torchaudio.save(file_path, audio.unsqueeze(0), sample_rate)
