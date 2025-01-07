@@ -387,7 +387,7 @@ def save_audio_files(output, sample_rate, filename_prefix, counter, data=None, s
     current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # Create filename with datetime
-    wavname = f"{current_time}_{filename_prefix}" if not data else f"{current_time}_{replace_variables(filename_prefix, data)}"
+    wavname = f"{filename_prefix}_{current_time}" if not data else f"{replace_variables(filename_prefix, data)}_{current_time}"
     
     filepaths = []
     for i, audio in enumerate(output):
@@ -542,7 +542,7 @@ class StableAudioConditioning:
         return {
             "required": {
                 "seconds_start": ("INT", {"default": 0, "min": 0, "max": 60, "step": 1, "display": "number"}),
-                "seconds_total": ("INT", {"default": 30, "min": 0, "max": 60, "step": 1, "display": "number"}),
+                "seconds_total": ("INT", {"default": 30, "min": 0, "max": 600, "step": 1, "display": "number"}),
                 "batch_size": ("INT", {"default": 1, "min": 1, "max": 50, "step": 1, "display": "number"}),
             }
         }
