@@ -543,8 +543,8 @@ class StableAudioConditioning:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "seconds_start": ("INT", {"default": 0, "min": 0, "max": 60, "step": 1, "display": "number"}),
-                "seconds_total": ("INT", {"default": 30, "min": 0, "max": 60, "step": 1, "display": "number"}),
+                "seconds_start": ("INT", {"default": 0, "min": 0, "max": 60000, "step": 1, "display": "number"}),
+                "seconds_total": ("INT", {"default": 30, "min": 0, "max": 60000, "step": 1, "display": "number"}),
                 "batch_size": ("INT", {"default": 1, "min": 1, "max": 50, "step": 1, "display": "number"}),
             }
         }
